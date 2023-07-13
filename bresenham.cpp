@@ -18,11 +18,11 @@ void plot(int x, int y) {
 }
 void bresenham(int xo, int yo, int xend, int yend) {
     int dx = abs(xend - xo), dy = abs(yend - yo);
-    int x, y, twoM = 2 * (dy - dx);
-    int p;
+    int x, y;
     if ((dy / dx) < 1) {
         int p = 2 * dy - dx;
-        int twody = 2 * dy, twoM = 2 * (dy - dx);
+        int twody = 2 * dy;
+        int twoDyMinDx = 2 * (dy - dx);
         if (xo > xend) {
             x = xend;
             y = yend;
@@ -40,15 +40,15 @@ void bresenham(int xo, int yo, int xend, int yend) {
             }
             else {
                 y++;
-                p += twoM;
+                p += twoDyMinDx;
             }
             plot(x, y);
         }
     }
     else {
         int twodx = 2 * dx;
-        twoM = 2 * (dx-dy);
-        p = 2 * dx - dy;
+        int twoDxMinDy = 2 * (dx-dy);
+        int p = 2 * dx - dy;
         if (xo > xend) {
             x = xend;
             y = yend;
@@ -66,7 +66,7 @@ void bresenham(int xo, int yo, int xend, int yend) {
             }
             else {
                 x++;
-                p += twoM;
+                p += twoDxMinDy;
             }
             plot(x, y);
         }
