@@ -30,16 +30,17 @@ void colorcube(){
     drawPoly(3,2,6,7);
     drawPoly(0,4,7,3);
 }
-void mouse(int b, int s, int x, int y){
-    if(b == GLUT_RIGHT_BUTTON && s == GLUT_DOWN){
-        flag = 0;
-    }
-    if(b == GLUT_RIGHT_BUTTON && s == GLUT_DOWN){
-        flag = 1;
-    }
-    if(b == GLUT_RIGHT_BUTTON && s == GLUT_DOWN){
-        flag = 2;
-    }
+void mouse(int key, int state, int x, int y)
+{
+	if (state == GLUT_DOWN)
+	{
+		if (key == GLUT_LEFT_BUTTON)
+			flag = 2;
+		else if (key == GLUT_MIDDLE_BUTTON)
+			flag = 1;
+		else if (key == GLUT_RIGHT_BUTTON)
+			flag = 0;
+	}
 }
 void idle(){
     theta[flag] += 5;
